@@ -1,0 +1,18 @@
+.contenedor {
+    background-color: bisque;
+    padding: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    
+}
+
+.form {
+    background-color: aquamarine;
+    max-width: 50%;
+    
+}
+.result{
+    background-color: grey;
+    max-width: 50%;
+}
