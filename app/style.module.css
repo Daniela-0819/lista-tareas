@@ -1,18 +1,102 @@
 .contenedor {
-    background-color: bisque;
+    background-color: rgb(255, 255, 255);
     padding: 20px;
     max-width: 100%;
     margin: 0 auto;
     font-family: Arial, sans-serif;
+    margin-bottom: 30px;
     
 }
 
-.form {
-    background-color: aquamarine;
-    max-width: 50%;
-    
+.form{
+    height: 540px;
+    align-content: center;
 }
+
+.form h1{
+    color: black;
+    text-align: center;
+}
+
+.form input{
+    width: 50%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;    
+    background-color: aliceblue;
+    border-radius: 50px;
+    box-shadow: 5px 5px 10px rgb(82, 82, 82);
+}
+
+.descripcion input{
+    color: black;
+}
+
+.fecha input{
+    color: black;
+}
+
+.descripcion{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.fecha{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.botonAgregar{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.botonAgregar button{
+    background-color: #516b98;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgb(82, 82, 82);
+}
+
 .result{
-    background-color: grey;
-    max-width: 50%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.result h1{
+    color: black;
+}
+
+.total p{
+    color: black;
+}
+
+.total{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.botones_Lista button{
+    background-color: #335b64;
+    color: white;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgb(82, 82, 82);
+}
+
+.botones_Lista{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
