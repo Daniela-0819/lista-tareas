@@ -1,4 +1,3 @@
-//al usar useState y useEffect, que solo funcionan en componentes cliente (en el navegador) debo poner esa linea.
 "use client";
 import { useEffect, useState } from "react";
 import React from 'react';
@@ -10,33 +9,46 @@ export default function Page() {
   const [tareas, setTareas] = useState([]);
   const [descripcion, setDescripcion] = useState("");
   const [fecha, setFecha] = useState("");
-  const [filtro, setFiltro] = useState("");//este es para filtrar las tareas pendientes y las hechas
+  const [filtro, setFiltro] = useState("");
+  const [pendientes, setPendientes] = useState(0);
+  const [hechas, setHechas] = useState(0);  // Nuevo estado para contar tareas hechas
+  const [tareasFiltradas, setTareasFiltradas] = useState([]);
 
-  //use efect
   useEffect(() => {
     const tareasGuardadas = localStorage.getItem("tareas");
     if (tareasGuardadas) {
-      setTareas(JSON.parse(tareasGuardadas)); //convierte el texto en un arreglo
+      setTareas(JSON.parse(tareasGuardadas));
     }
   }, []);
 
-  //este es para convertir el arreglo en un texto con formato JSON.stringfy
   useEffect(() => {
     localStorage.setItem("tareas", JSON.stringify(tareas));
   }, [tareas]);
 
+  // Actualizar conteo de pendientes y hechas cuando cambian las tareas
   useEffect(() => {
-    // Aquí luego pondremos código para actualizar la lista filtrada
-  }, [filtro]);
-
-  useEffect(() => {
-    const pendientes = tareas.filter(t => !t.hecha).length;//aca la t es una variable temporal
-    console.log(`Tienes ${pendientes} tareas pendientes`);
-
+    const totalPendientes = tareas.filter(t => !t.hecha).length;
+    const totalHechas = tareas.filter(t => t.hecha).length;
+    setPendientes(totalPendientes);
+    setHechas(totalHechas);
   }, [tareas]);
 
-  //funcion para poder agregar las tareas
+  useEffect(() => {
+    if (filtro === "pendientes") {
+      setTareasFiltradas(tareas.filter(t => !t.hecha));
+    } else if (filtro === "hechas") {
+      setTareasFiltradas(tareas.filter(t => t.hecha));
+    } else {
+      setTareasFiltradas(tareas);
+    }
+  }, [filtro, tareas]);
+
   function agregarTarea() {
+    if (descripcion.trim() === "" || fecha === "") {
+      alert("Por favor completa la descripción y la fecha.");
+      return;
+    }
+
     const nuevaTarea = {
       id: Date.now(),
       descripcion: descripcion,
@@ -49,31 +61,59 @@ export default function Page() {
     setFecha("");
   }
 
-  function calificarTarea() {
-    const hecha = true;
-
+  function completarTarea(id) {
+    const nuevasTareas = tareas.map(t =>
+      t.id === id ? { ...t, hecha: !t.hecha } : t
+    );
+    setTareas(nuevasTareas);
   }
 
-  //el return debe quedar dentro de la funcion, si no, no da
+  function eliminarTarea(id) {
+    const nuevasTareas = tareas.filter(t => t.id !== id);
+    setTareas(nuevasTareas);
+  }
+
   return (
     <div className={styles.contenedor}>
       <div className={styles.form}>
         <h1>Agregar nueva tarea</h1>
-        <input type="text" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} /><br></br>
-        <input type="date" value={fecha} onChange={(e) => setFecha(e.target.value)} /><br></br>
-        <button onClick={agregarTarea}>Agregar Tarea</button><br></br>
-        <button onClick={calificarTarea}>Marcar como hecha</button>
+        <input
+          type="text"
+          placeholder="Descripción"
+          value={descripcion}
+          onChange={(e) => setDescripcion(e.target.value)}
+        /><br />
+        <input
+          type="date"
+          value={fecha}
+          onChange={(e) => setFecha(e.target.value)}
+        /><br />
+        <button onClick={agregarTarea}>Agregar Tarea</button><br />
       </div>
 
       <div className={styles.result}>
         <h1>Tareas</h1>
+        <p>Tareas pendientes: {pendientes}</p>
+        <p>Tareas hechas: {hechas}</p> {/* Aquí mostramos la cantidad de tareas hechas */}
+
         <ul>
-          {tareas.map(tarea => (
+          {tareasFiltradas.map(tarea => (
             <li key={tarea.id}>
-              {tarea.descripcion} - {tarea.fecha} - {tarea.hecha ? "Hecha" : "Pendiente"}
+              <Tarea
+                tarea={tarea}
+                onCompletar={completarTarea}
+                onEliminar={eliminarTarea}
+              />
             </li>
           ))}
         </ul>
+
+        <div>
+          <button onClick={() => setFiltro("")}>Todas</button>
+          <button onClick={() => setFiltro("pendientes")}>Pendientes</button>
+          <button onClick={() => setFiltro("hechas")}>Hechas</button>
+        </div>
+
       </div>
     </div>
   );
