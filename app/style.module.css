@@ -1,102 +1,124 @@
 .contenedor {
-    background-color: rgb(255, 255, 255);
-    padding: 20px;
-    max-width: 100%;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    margin-bottom: 30px;
-    
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9fafb;
+  flex-wrap: wrap;
 }
 
-.form{
-    height: 540px;
-    align-content: center;
+.form,
+.result {
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  max-width: 100%;
 }
 
-.form h1{
-    color: black;
-    text-align: center;
+.form h1,
+.result h1 {
+  text-align: center;
+  color: #1f2937;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
-.form input{
-    width: 50%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;    
-    background-color: aliceblue;
-    border-radius: 50px;
-    box-shadow: 5px 5px 10px rgb(82, 82, 82);
+.descripcion,
+.fecha,
+.botonAgregar {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-.descripcion input{
-    color: black;
+.form input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 50px;
+  background-color: #e8f0fe;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
 }
 
-.fecha input{
-    color: black;
+.descripcion input,
+.fecha input {
+  color: #111827;
 }
 
-.descripcion{
-    text-align: center;
-    margin-top: 40px;
+.botonAgregar button {
+  background-color: #2563eb;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s;
 }
 
-.fecha{
-    text-align: center;
-    margin-top: 20px;
+.botonAgregar button:hover {
+  background-color: #1d4ed8;
 }
 
-.botonAgregar{
-    text-align: center;
-    margin-top: 20px;
+.result {
+  text-align: center;
 }
 
-.botonAgregar button{
-    background-color: #516b98;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 5px 5px 10px rgb(82, 82, 82);
+.botones_Lista {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-.result{
-    text-align: center;
-    margin-top: 20px;
+.botones_Lista button {
+  background-color: #e0ecff;
+  color: #1d4ed8;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
-.result h1{
-    color: black;
+.botones_Lista button:hover {
+  background-color: #c7dcff;
 }
 
-.total p{
-    color: black;
+.botones_Lista button:focus {
+  background-color: #2563eb;
+  color: white;
 }
 
-.total{
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.total {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #111827;
+  font-weight: 500;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.botones_Lista button{
-    background-color: #335b64;
-    color: white;
-    padding: 10px 40px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 5px 5px 10px rgb(82, 82, 82);
+.total p {
+  margin: 0;
 }
 
-.botones_Lista{
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 50px;
+.result ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.result li {
+  margin-bottom: 10px;
 }

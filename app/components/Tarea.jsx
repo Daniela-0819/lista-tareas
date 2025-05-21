@@ -6,18 +6,25 @@ export default function Tarea({ tarea, onCompletar, onEliminar }) {
   return (
     <div className={estilo.tarea}>
       <div className={estilo.tarea__info}>
-      <p>{tarea.descripcion}</p>
-      <p>{tarea.fecha}</p>
-      <p>{tarea.hecha ? "Hecha" : "Pendiente"}</p>
+        <input
+          type="checkbox"
+          checked={tarea.hecha}
+          onChange={() => onCompletar(tarea.id)}
+          className={estilo.checkbox}
+        />
+        <div className={estilo.textos}>
+          <strong
+            className={estilo.descripcion}
+            style={{ textDecoration: tarea.hecha ? "line-through" : "none" }}
+          >
+            {tarea.descripcion}
+          </strong>
+          <span className={estilo.fecha}>{tarea.fecha}</span>
+        </div>
       </div>
-      <div className={estilo.botones}>
-      <div className={estilo.boton_completar}>
-      <button onClick={() => onCompletar(tarea.id)}>Marcar como hecha</button>
-      </div>
-      <div className={estilo.boton_eliminar}>
-      <button onClick={() => onEliminar(tarea.id)}>Eliminar</button>
-      </div>
-      </div>
+      <button className={estilo.boton_eliminar} onClick={() => onEliminar(tarea.id)}>
+        Eliminar
+      </button>
     </div>
   );
 }

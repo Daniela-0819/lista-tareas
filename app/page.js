@@ -75,7 +75,7 @@ export default function Page() {
   return (
     <div className={styles.contenedor}>
       <div className={styles.form}>
-        <h1>Agregar nueva tarea</h1>
+        <h1>AGREGAR NUEVA TAREA</h1>
 
         <div className={styles.descripcion}>
           <input
@@ -104,7 +104,7 @@ export default function Page() {
       </div>
 
       <div className={styles.result}>
-        <h1>Tareas</h1>
+        <h1>TAREAS</h1>
         <div className={styles.botones_Lista}>
           <button onClick={() => setFiltro("")}>Todas</button>
           <button onClick={() => setFiltro("pendientes")}>Pendientes</button>

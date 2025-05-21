@@ -1,36 +1,56 @@
-.tarea{
-    
+.tarea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
 }
 
-.tarea__info{
-    margin-top: 20px;
-    margin-bottom: 20px;
+.tarea__info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.tarea__info p{
-    color: black;
-    margin-bottom: 10px;
+.checkbox {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
 }
 
-.botones{
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.textos {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
 }
 
-.botones button{
-    background-color: #516b98;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 5px 5px 10px rgb(82, 82, 82);
+.descripcion {
+  font-size: 14px;
+  color: #111827;
 }
 
-.boton_eliminar button{
-    background-color: #858585;
+.fecha {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.boton_eliminar {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.boton_eliminar:hover {
+  background-color: #a30e0e;
 }
 
